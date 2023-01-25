@@ -50,9 +50,10 @@ module Sidekiq
 
       def boot_application
         if @system_booted
-          logger.info "#{::Process.pid} - environment already started"
-        else
+          logger.info "#{::Process.pid} - Booting child application"
           super
+        else
+          logger.info "Booting master application"
           @system_booted = true
         end
       end
